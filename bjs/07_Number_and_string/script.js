@@ -112,7 +112,7 @@ document.getElementById('btn_calc').addEventListener('click', function () {
         const result = lastOperand / parseInt(inputWindow.value);
         operation = null;
         lastOperand = 0;
-        if (result === Infinity) {inputWindow.value = 'E'}
+        if (result === Infinity) {inputWindow.value = 'Division by Zero!'}
         else {inputWindow.value = result};
     }
 })
