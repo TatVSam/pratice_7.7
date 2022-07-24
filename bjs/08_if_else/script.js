@@ -3,7 +3,7 @@
 //alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
 const minValueField = document.querySelector('#minValueInput');
 const maxValueField = document.querySelector('#maxValueInput');
-const invitation = document.querySelector('#gameStart');
+const invitation = document.querySelector('#invitation');
 invitation.textContent="Задайте промежуток от -999 до 999";
 var minValue;
 var maxValue;
@@ -23,8 +23,8 @@ btnOver.disabled = true;
 btnLess.disabled = true;
 btnEqual.disabled = true;
 
-orderNumberField.innerText = orderNumber;
-//answerField.innerText = `Вы загадали число ${answerNumber }?`;
+orderNumberField.textContent = orderNumber;
+
 
 var oneToNineteen = ['один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять', 'десять',
 'одиннадцать', 'двенадцать', 'тринадцать', 'четырнадцать', 
@@ -91,7 +91,6 @@ function numToStr (myNumber) {
     else return myNumber
 }
 
-//answerField.innerText = `Вы загадали число ${numToStr(minValue) }?`;
 
 
 
@@ -99,13 +98,23 @@ btnInput.addEventListener('click', function () {
     
     minValue = (minValueField.value / 1) || 0;
     minValue = minValue < -999 ? -999 : minValue;
-    maxValue = (maxValueField.value / 1) || 100;
+    minValue = minValue > 999 ? 999 : minValue;
+
+    if((maxValueField.value / 1 === 0) && (maxValueField.value !== '') ) {
+        maxValue = 0;
+    } else {
+        maxValue = (maxValueField.value / 1) || 100;
+    }
+   
     maxValue = maxValue > 999 ? 999 : maxValue;
-    if (minValue > maxValue) {invitation.textContent = 'Неверный промежуток! Меньшее значение больше большего! Попробуйте еще раз...'} 
-    else {
+    maxValue = maxValue < -999 ? -999 : maxValue;
+
+    if (minValue > maxValue) {
+        invitation.textContent = 'Неверный промежуток! Меньшее значение больше большего! Попробуйте еще раз...'
+    } else {
     
         orderNumber = 1;
-    orderNumberField.innerText = orderNumber;
+    orderNumberField.textContent = orderNumber;
     btnRetry.disabled = false;
     btnOver.disabled = false;
     btnLess.disabled = false;
@@ -117,7 +126,7 @@ btnInput.addEventListener('click', function () {
     
     invitation.textContent=`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю.`;
     answerNumber = Math.floor((minValue + maxValue) / 2);
-    answerField.innerText = `${threeRandomPhrases("Неужели это число ", "Кажется, знаю, вы загадали число ", "Я догадался! Это ведь число ")} 
+    answerField.textContent = `${threeRandomPhrases("Неужели это число ", "Кажется, знаю, вы загадали число ", "Я догадался! Это ведь число ")} 
     ${numToStr(answerNumber)}?`;
 
     }
@@ -140,43 +149,51 @@ btnRetry.addEventListener('click', function () {
     
     invitation.textContent="Задайте промежуток от -999 до 999";
     
-    orderNumberField.innerText = orderNumber;
+    orderNumberField.textContent = orderNumber;
     
-    answerField.innerText = "";
+    answerField.textContent = "";
       
     gameRun = false;
 
 })
 
 btnOver.addEventListener('click', function () {
+    
+    minValue = answerNumber + 1;
+ 
     if (gameRun){
-        if (minValue === maxValue){
-            answerField.innerText = `${threeRandomPhrases("Вы загадали неправильное число!\n\u{1F914}","Я сдаюсь...\n\u{1F92F}", "Я сегодня не в форме...\n\u{1F62B}")}`;
+        if (minValue > maxValue){
+            answerField.textContent = `${threeRandomPhrases("Вы загадали неправильное число!\n\u{1F914}","Я сдаюсь...\n\u{1F92F}", "Я сегодня не в форме...\n\u{1F62B}")}`;
             gameRun = false;
         } else {
-            minValue = answerNumber  + 1;
-            answerNumber  = Math.floor((minValue + maxValue) / 2);
+           
+            answerNumber = Math.floor((minValue + maxValue) / 2);
+            
+           
             orderNumber++;
-            orderNumberField.innerText = orderNumber;
+            orderNumberField.textContent = orderNumber;
                                          
-            answerField.innerText = `${threeRandomPhrases("Неужели это число ", "Кажется, знаю, вы загадали число ", "Я догадался! Это ведь число ")} 
+            answerField.textContent = `${threeRandomPhrases("Неужели это число ", "Кажется, знаю, вы загадали число ", "Я догадался! Это ведь число ")} 
             ${numToStr(answerNumber)}?`;
         }
     }
 })
 
 btnLess.addEventListener('click', function () {
+    maxValue = answerNumber - 1;
+    
     if (gameRun){
-        if (minValue === maxValue){       
+        if (minValue > maxValue){       
 
-            answerField.innerText = `${threeRandomPhrases("Вы загадали неправильное число!\n\u{1F914}","Я сдаюсь...\n\u{1F92F}", "Я сегодня не в форме...\n\u{1F62B}")}`;
+            answerField.textContent = `${threeRandomPhrases("Вы загадали неправильное число!\n\u{1F914}","Я сдаюсь...\n\u{1F92F}", "Я сегодня не в форме...\n\u{1F62B}")}`;
             gameRun = false;
         } else {
-            maxValue = answerNumber - 1;
-            answerNumber  = Math.ceil((minValue + maxValue) / 2);
+            
+            answerNumber = Math.ceil((minValue + maxValue) / 2);
+            
             orderNumber++;
-            orderNumberField.innerText = orderNumber;
-            answerField.innerText = `${threeRandomPhrases("Неужели это число ", "Кажется, знаю, вы загадали число ", "Я догадался! Это ведь число ")} 
+            orderNumberField.textContent = orderNumber;
+            answerField.textContent = `${threeRandomPhrases("Неужели это число ", "Кажется, знаю, вы загадали число ", "Я догадался! Это ведь число ")} 
             ${numToStr(answerNumber)}?`;
         }
     }
@@ -184,7 +201,7 @@ btnLess.addEventListener('click', function () {
 
 btnEqual.addEventListener('click', function () {
     if (gameRun){
-        answerField.innerText = `${threeRandomPhrases("Я всегда угадываю\n\u{1F60E} ", "Обожаю играть с вами!\n\u{1F60A}", "Спасибо за интересную игру!\n\u{1F609}")}`;
+        answerField.textContent = `${threeRandomPhrases("Я всегда угадываю\n\u{1F60E} ", "Обожаю играть с вами!\n\u{1F60A}", "Спасибо за интересную игру!\n\u{1F609}")}`;
         gameRun = false;
     }
 })
