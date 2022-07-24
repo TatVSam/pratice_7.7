@@ -17,6 +17,7 @@ const btnRetry = document.querySelector('#btnRetry');
 const btnOver = document.querySelector('#btnOver');
 const btnLess = document.querySelector('#btnLess');
 const btnEqual = document.querySelector('#btnEqual');
+const btnInput = document.querySelector('#btnInput');
 btnRetry.disabled = true;
 btnOver.disabled = true;
 btnLess.disabled = true;
@@ -94,7 +95,7 @@ function numToStr (myNumber) {
 
 
 
-document.querySelector('#btnInput').addEventListener('click', function () {
+btnInput.addEventListener('click', function () {
     
     minValue = (minValueField.value / 1) || 0;
     minValue = minValue < -999 ? -999 : minValue;
@@ -109,6 +110,9 @@ document.querySelector('#btnInput').addEventListener('click', function () {
     btnOver.disabled = false;
     btnLess.disabled = false;
     btnEqual.disabled = false;
+    this.disabled = true;
+    minValueField.disabled = true;
+    maxValueField.disabled = true;
     gameRun = true;
     
     invitation.textContent=`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю.`;
@@ -120,21 +124,27 @@ document.querySelector('#btnInput').addEventListener('click', function () {
 })
 
 btnRetry.addEventListener('click', function () {
-    minValue = (minValueField.value / 1) || 0;
-    minValue = minValue < -999 ? -999 : minValue;
-    maxValue = (maxValueField.value / 1) || 100;
-    maxValue = maxValue > 999 ? 999 : maxValue;
-    orderNumber = 1;
-    //invitation.textContent="Введите границы интервала от -999 до 999";
+
+    btnRetry.disabled = true;
+    btnOver.disabled = true;
+    btnLess.disabled = true;
+    btnEqual.disabled = true;
+
+    btnInput.disabled = false;
+    minValueField.disabled = false;
+    maxValueField.disabled = false;
+   
+    orderNumber = 0;
+    maxValueField.value = "";
+    minValueField.value = "";
     
-    answerNumber = Math.floor((minValue + maxValue) / 2);
+    invitation.textContent="Задайте промежуток от -999 до 999";
     
     orderNumberField.innerText = orderNumber;
     
-   answerField.innerText = `${threeRandomPhrases("Неужели это число ", "Кажется, знаю, вы загадали число ", "Я догадался! Это ведь число ")} 
-    ${numToStr(answerNumber)}?`;
+    answerField.innerText = "";
       
-    gameRun = true;
+    gameRun = false;
 
 })
 
