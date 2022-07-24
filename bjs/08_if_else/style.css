@@ -1,4 +1,28 @@
 .game-card {
+    
     height: 100vh;
+    width: 100wv;
     font-family: 'Open Sans', monospace;
+}
+
+.column {
+    
+    margin-top: 15vh;
+    height: 80vh; 
+    width: 35vw;
+}
+
+.rowTable {
+    margin-top: 2vh;
+    
+}
+
+.gameForm {
+    min-height: 40vh;
+    min-width: 30vh;
+}
+
+.questionSpan {
+    min-height: 30vh;
+    
 }

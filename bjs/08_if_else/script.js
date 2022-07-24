@@ -82,8 +82,9 @@ function numToStr (myNumber) {
         result = "0";
     }
     
-    result = `${signRes} ${result}`;
-    
+    if (signRes) {
+        result = `${signRes} ${result}`}
+   
     if (result.length < 20) 
     return result
     else return myNumber
@@ -110,7 +111,7 @@ document.querySelector('#btnInput').addEventListener('click', function () {
     btnEqual.disabled = false;
     gameRun = true;
     
-    invitation.textContent=`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`;
+    invitation.textContent=`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю.`;
     answerNumber = Math.floor((minValue + maxValue) / 2);
     answerField.innerText = `${threeRandomPhrases("Неужели это число ", "Кажется, знаю, вы загадали число ", "Я догадался! Это ведь число ")} 
     ${numToStr(answerNumber)}?`;

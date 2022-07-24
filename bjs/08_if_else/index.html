@@ -35,62 +35,47 @@
     <button class = "inputstart">Поехали!</button>
 </div>-->
 
-    <div class="row game-card align-items-center">
+    <div class="row game-card">
 
-       <!-- <div class="row">
-            <div class="col">
-              <label for="minValueInput">Введите минимальное значение числа для игры</label>
-              <input type="text" class="form-control" id="minValueInput" placeholder="0">
-            </div>
-            <div class="col">
-              <label for="maxValueInput">Введите максимальное значение числа для игры</label>
-              <input type="text" class="form-control" id="maxValueInput" placeholder="100">
-            </div>
-
-            <div class="col">
-                <button id="btnStart" data-toggle="collapse" data-target="#gameStart">Поехали!</button>
-                
-            </div>
-            <div class="col">
-                <div id="gameStart">
-                   
-                </div>
-            </div>
-         
-        </div> -->
+             
        
-        <div class="row">
-        <div class="col">
-          <label for="minValueInput">Введите минимальное значение числа для игры</label>
+        <div class="col col-md-4 offset-md-1 column">
+        <div class="row rowTable">
+          <label for="minValueInput">Введите минимальное значение числа для игры:</label>
+        </div>
+        <div class="row rowTable">
           <input type="text" id="minValueInput" placeholder="0">
         </div>
-        <div class="col">
-          <label for="maxValueInput">Введите максимальное значение числа для игры</label>
+        
+        <div class="row rowTable">
+          <label for="maxValueInput">Введите максимальное значение числа для игры:</label>
+        </div>
+        <div class="row rowTable">
           <input type="text" id="maxValueInput" placeholder="100">
         </div>
 
-        <div class="col">
-            <button id="btnInput">Поехали!</button>
+        <div class="row rowTable">
+            <button class="btn btn-info" id="btnInput">Поехали!</button>
             
         </div>
         
-        <div class="col">
+        <div class="row rowTable">
             <div id="gameStart">
                
             </div>
-        </div>
-        
-          
-
-        <div class="col col-md-4 offset-md-1">
-            <div class="card text-center">
+        </div> 
+    
+    </div>
+       
+        <div class="col col-md-4 offset-md-1 column">
+            <div class="card text-center gameForm">
                 <div class="card-header">
                     <p class="m-0">Вопрос №<span id="orderNumberField">5</span></p>
                 </div>
-                <div class="card-body">
+                <div class="card-body questionSpan">
                     <div class="row no-gutters">
                         <div class="col">
-                            <h3 class="card-title m-0"><span id="answerField"></span></h3>
+                            <h3 class="card-title m-0"><span id="answerField" ></span></h3>
                         </div>
                     </div>
                 </div>
@@ -102,11 +87,11 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-link" id="btnRetry">Заново</button>
+                    <button class="btn btn-info" id="btnRetry">Заново</button>
                 </div>
             </div>
         </div>
-    </div>
+    
 </div>
 
 
