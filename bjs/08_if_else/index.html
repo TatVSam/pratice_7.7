@@ -26,11 +26,11 @@
 
 <div class="container">
 
-    <div class="row game-card">
+    <div class="row justify-content-md-center game-card">
 
              
        
-        <div class="col col-md-4 offset-md-1 column">
+        <div class="col col-md-4 column">
         <div class="row rowTable">
           <label for="minValueInput">Введите минимальное значение числа для игры:</label>
         </div>
@@ -58,7 +58,7 @@
     
     </div>
        
-        <div class="col col-md-4 offset-md-1 column">
+        <div class="col col-md-4 column">
             <div class="card text-center gameForm">
                 <div class="card-header">
                     <p class="m-0">Вопрос №<span id="orderNumberField">5</span></p>
@@ -71,10 +71,10 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="btn-group">
-                        <button class="btn btn-info" id="btnLess">&#129047;<br>меньше</button>
-                        <button class="btn btn-success btn-lg" id="btnEqual">Верно!</button>
-                        <button class="btn btn-info" id="btnOver">больше<br>&#129045;</button>
+                    <div class="row btn-group">
+                        <button class="btn btn-info col col-md-4" id="btnLess">&#129047;<br>меньше</button>
+                        <button class="btn btn-success col col-md-4" id="btnEqual">Верно!</button>
+                        <button class="btn btn-info col col-md-4" id="btnOver">больше<br>&#129045;</button>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -84,7 +84,7 @@
         </div>
     
 </div>
-
+</div>
 
 <script src="script.js"></script>
 </body>
