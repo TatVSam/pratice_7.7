@@ -1,10 +1,7 @@
-//let minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
-//let maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
-//alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
 const minValueField = document.querySelector('#minValueInput');
 const maxValueField = document.querySelector('#maxValueInput');
 const invitation = document.querySelector('#invitation');
-invitation.textContent="Задайте промежуток от -999 до 999";
+invitation.textContent = "Задайте промежуток от -999 до 999. Значения по умолчанию 0 и 100. Дроби округляются.";
 var minValue;
 var maxValue;
 var answerNumber;
@@ -34,6 +31,7 @@ var tens = ['десять', 'двадцать', 'тридцать', 'сорок'
 var hundreds = ['сто', 'двести', 'триста', 'четыреста', 
 'пятьсот', 'шестьсот', 'семьсот', 'восемьсот', 'девятьсот'];
 
+//функция, выдающая случайным образом одну из трех заданных фраз
 function threeRandomPhrases (phrase1, phrase2, phrase3) {
     
     const phraseRandom = Math.round(Math.random() * 3 + 0.5);
@@ -61,34 +59,39 @@ function numToStr (myNumber) {
 
     var myNumberAbs = Math.abs(myNumber);
 
-    tensOnes = myNumberAbs % 100;
+    tensOnes = myNumberAbs % 100; //двузначный (или однозначный) остаток от деления числа
    
    if (tensOnes > 0 && tensOnes < 20) {
-        result = `${oneToNineteen[tensOnes - 1]}`;
+        result = `${oneToNineteen[tensOnes - 1]}`; //если остаток число от 01 до 19
     } else if (tensOnes > 19) {
         if (tensOnes % 10 > 0) {
-        result = `${tens[Math.floor(tensOnes / 10) - 1]} ${oneToNineteen[tensOnes % 10 - 1] || ''}`} else {
-        result = `${tens[Math.floor(tensOnes / 10) - 1]}`}
-    }
-    
-    
-    if (myNumberAbs / 100 >= 1) {
-        if (tensOnes === 0) {
-        result = `${hundreds[Math.floor(myNumberAbs / 100) - 1]}`} else {
-            result = `${hundreds[Math.floor(myNumberAbs / 100) - 1]} ${result}` 
+            result = `${tens[Math.floor(tensOnes / 10) - 1]} ${oneToNineteen[tensOnes % 10 - 1] || ''}`//2-значный остаток из десятков и единиц
+        } else {
+            result = `${tens[Math.floor(tensOnes / 10) - 1]}` //2-значный остаток только из десятков
         }
     }
-
+    
+    
+    if (myNumberAbs / 100 >= 1) { //если число трехзначное
+        if (tensOnes === 0) {
+            result = `${hundreds[Math.floor(myNumberAbs / 100) - 1]}` //чисто трехзначное число
+        } else {
+            result = `${hundreds[Math.floor(myNumberAbs / 100) - 1]} ${result}` //терхзначеное число и десятками и/или единицами
+        }
+    }
+   
     if ((myNumberAbs / 100 === 0) && (tensOnes === 0)) {
-        result = "0";
+        result = "0"; //если ноль
     }
     
     if (signRes) {
-        result = `${signRes} ${result}`}
+        result = `${signRes} ${result}` //если отрицательное (с "минус")
+    }
    
-    if (result.length < 20) 
-    return result
-    else return myNumber
+    if (result.length < 20) //если длина текстового представления меньше 20
+        return result 
+    else 
+        return myNumber
 }
 
 
@@ -96,14 +99,14 @@ function numToStr (myNumber) {
 
 btnInput.addEventListener('click', function () {
     
-    minValue = (minValueField.value / 1) || 0;
-    minValue = minValue < -999 ? -999 : minValue;
+    minValue = Math.ceil(minValueField.value / 1) || 0; //числовое значение или 0, дроби округляются
+    minValue = minValue < -999 ? -999 : minValue; //сдвиг границы
     minValue = minValue > 999 ? 999 : minValue;
 
     if((maxValueField.value / 1 === 0) && (maxValueField.value !== '') ) {
-        maxValue = 0;
+        maxValue = 0; //если 0
     } else {
-        maxValue = (maxValueField.value / 1) || 100;
+        maxValue = Math.floor(maxValueField.value / 1) || 100;
     }
    
     maxValue = maxValue > 999 ? 999 : maxValue;
@@ -126,7 +129,7 @@ btnInput.addEventListener('click', function () {
     
     invitation.textContent=`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю.`;
     answerNumber = Math.floor((minValue + maxValue) / 2);
-    answerField.textContent = `${threeRandomPhrases("Неужели это число ", "Кажется, знаю, вы загадали число ", "Я догадался! Это ведь число ")} 
+    answerField.textContent = `${threeRandomPhrases("Неужели это число ", "Кажется, знаю. Вы загадали число ", "Я догадался! Это ведь число ")} 
     ${numToStr(answerNumber)}?`;
 
     }
@@ -147,7 +150,7 @@ btnRetry.addEventListener('click', function () {
     maxValueField.value = "";
     minValueField.value = "";
     
-    invitation.textContent="Задайте промежуток от -999 до 999";
+    invitation.textContent="Задайте промежуток от -999 до 999. Значения по умолчанию 0 и 100. Дроби округляются.";
     
     orderNumberField.textContent = orderNumber;
     
@@ -173,7 +176,7 @@ btnOver.addEventListener('click', function () {
             orderNumber++;
             orderNumberField.textContent = orderNumber;
                                          
-            answerField.textContent = `${threeRandomPhrases("Неужели это число ", "Кажется, знаю, вы загадали число ", "Я догадался! Это ведь число ")} 
+            answerField.textContent = `${threeRandomPhrases("Неужели это число ", "Кажется, знаю. Вы загадали число ", "Я догадался! Это ведь число ")} 
             ${numToStr(answerNumber)}?`;
         }
     }
@@ -193,7 +196,7 @@ btnLess.addEventListener('click', function () {
             
             orderNumber++;
             orderNumberField.textContent = orderNumber;
-            answerField.textContent = `${threeRandomPhrases("Неужели это число ", "Кажется, знаю, вы загадали число ", "Я догадался! Это ведь число ")} 
+            answerField.textContent = `${threeRandomPhrases("Неужели это число ", "Кажется, знаю. Вы загадали число ", "Я догадался! Это ведь число ")} 
             ${numToStr(answerNumber)}?`;
         }
     }
