@@ -32,4 +32,4 @@
 ---
 ## Как открыть/запустить
 
-Зайти в папку сайта в файловом менеджере, найти файл bjs/08_if_else/index.html и кликнуть 2 раза. Результат также можно посмотреть на *GitHub pages* по [ссылке](https://tatvsam.github.io/task_8.7/bjs/08_if_else/index.html).
+Зайти в папку сайта в файловом менеджере, найти файл bjs/08_if_else/index.html и кликнуть 2 раза. Результат также можно посмотреть на *GitHub pages* по [ссылке](https://tatvsam.github.io/task_8.7-9.11/bjs/08_if_else/index.html).
