@@ -65,11 +65,70 @@ const personGenerator = {
             "id_10": "Владиславович"
         }
     }`,
+    
+    monthGenitiveJson: `{
+        "count": 10,
+        "list": {     
+            "id_1": "января",
+            "id_2": "февраля",
+            "id_3": "марта",
+            "id_4": "апреля",
+            "id_5": "мая",
+            "id_6": "июня",
+            "id_7": "июля",
+            "id_8": "августа",
+            "id_9": "сентября",
+            "id_10": "октября",
+            "id_11": "ноября",
+            "id_12": "декабря"
+
+        }
+    }`,
+
+    maleProfessionJson: `{
+        "count": 10,
+        "list": {     
+            "id_1": "столяр",
+            "id_2": "программист",
+            "id_3": "учитель",
+            "id_4": "шахтер",
+            "id_5": "спортсмен",
+            "id_6": "водитель",
+            "id_7": "менеджер",
+            "id_8": "музыкант",
+            "id_9": "юрист",
+            "id_10": "солдат"
+        }
+    }`,
+
+    femaleProfessionJson: `{
+        "count": 10,
+        "list": {     
+            "id_1": "медсестра",
+            "id_2": "программист",
+            "id_3": "учитель",
+            "id_4": "воспитатель",
+            "id_5": "дизайнер",
+            "id_6": "врач",
+            "id_7": "менеджер",
+            "id_8": "музыкант",
+            "id_9": "юрист",
+            "id_10": "секретарь"
+        }
+    }`,
 
     GENDER_MALE: 'Мужчина',
     GENDER_FEMALE: 'Женщина',
 
-    monthGenitive: ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'], 
+    
+    isLeapYear: function (year) {
+
+        if ((0 == year % 4) && (0 != year % 100) || (0 == year % 400)) {
+            return true;
+        } else {
+            return false;
+        }
+    },
 
     randomIntNumber: (max = 1, min = 0) => Math.floor(Math.random() * (max - min + 1) + min),
 
@@ -113,14 +172,17 @@ const personGenerator = {
     },
 
     randomBirthDate: function() {
-        let resDate;
-        const monthNum = this.randomIntNumber(12,1);
-        resDate = `${this.monthGenitive[monthNum - 1]}`;
-        
-        if ([1, 3, 5, 7, 8, 10, 12].includes(monthNum)) return `${this.randomIntNumber(31,1)} ${resDate}`
-        else if (monthNum === 2) return `${this.randomIntNumber(28,1)} ${resDate}`
+        let resDate = this.randomValue(this.monthGenitiveJson);
+         
+                
+        if (["января", "марта", "мая", "июля", "августа", "октября", "декабря"].includes(resDate)) 
+            return `${this.randomIntNumber(31,1)} ${resDate}`
+        else if ((resDate === "февраля") && (this.isLeapYear(this.person.birthYear)))
+            return `${this.randomIntNumber(29,1)} ${resDate}`
+        else if (resDate === "февраля")
+            return `${this.randomIntNumber(28,1)} ${resDate}`
         else
-        return `${this.randomIntNumber(30,1)} ${resDate}`
+            return `${this.randomIntNumber(30,1)} ${resDate}`
 
     },
 
@@ -130,7 +192,11 @@ const personGenerator = {
 
     },
 
- 
+    randomProfession: function() {
+        if (this.person.gender === this.GENDER_MALE) return this.randomValue(this.maleProfessionJson)
+        else return this.randomValue(this.femaleProfessionJson)
+    },
+
     getPerson: function () {
         this.person = {};
         this.person.gender = this.randomGender();
@@ -139,6 +205,7 @@ const personGenerator = {
         this.person.patronymic = this.randomPatronymic();
         this.person.birthDate = this.randomBirthDate();
         this.person.birthYear = this.randomBirthYear();
+        this.person.profession = this.randomProfession();
         return this.person;
     }
 };
