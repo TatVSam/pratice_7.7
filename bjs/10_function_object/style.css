@@ -1,3 +1,7 @@
+.generatorForm {
+    margin-top: 2em;
+    box-sizing: border-box;
+}
 .column {
     text-align: left;
 }
@@ -9,3 +13,48 @@ h3,h4,h5{
 .btn {
     margin-top: 1em;
 }
+
+.card-header {
+    background-color:#217a79;
+    color: white;
+}
+
+.card-body {
+    background-color:#d3f2a3;
+    color: #074050;
+}
+
+.card-footer {
+    background-color:#217a79;
+    color: black;
+}
+
+#btnClear, #btnActivate {
+    display: inline-block;
+    width: 49%;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #97e196;
+    border: none;
+    border-radius: 10px;
+ 
+  }
+  
+  #btnActivate:hover {background-color: #6cc08b}
+
+  #btnClear:hover {background-color: #6cc08b}
+  
+ #btnActivate:active {
+    background-color: #105965;
+    transform: translateY(4px);
+  }
+
+  #btnClear:active {
+    background-color: #105965;
+    transform: translateY(4px);
+  }

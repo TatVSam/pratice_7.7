@@ -91,13 +91,13 @@ const personGenerator = {
             "id_1": "столяр",
             "id_2": "программист",
             "id_3": "учитель",
-            "id_4": "шахтер",
+            "id_4": "бизнесмен",
             "id_5": "спортсмен",
             "id_6": "водитель",
             "id_7": "менеджер",
             "id_8": "музыкант",
             "id_9": "юрист",
-            "id_10": "солдат"
+            "id_10": "военный"
         }
     }`,
 
@@ -117,8 +117,8 @@ const personGenerator = {
         }
     }`,
 
-    GENDER_MALE: 'Мужчина',
-    GENDER_FEMALE: 'Женщина',
+    GENDER_MALE: 'Мужской',
+    GENDER_FEMALE: 'Женский',
 
     
     isLeapYear: function (year) {
@@ -193,8 +193,32 @@ const personGenerator = {
     },
 
     randomProfession: function() {
-        if (this.person.gender === this.GENDER_MALE) return this.randomValue(this.maleProfessionJson)
+        if (this.person.gender === this.GENDER_MALE) {
+            if (this.person.birthYear >= 2016) 
+            return "дошкольник"
+        else if (this.person.birthYear >= 2005) 
+            return "школьник"
+        else if (this.person.birthYear >= 2001)
+            return "студент"
+        else if (this.person.birthYear <= 1957)
+            return "пенсионер"
+        else return this.randomValue(this.maleProfessionJson)
+
+        }
+
+        if (this.person.gender === this.GENDER_FEMALE) {
+            if (this.person.birthYear >= 2016) 
+            return "дошкольница"
+        else if (this.person.birthYear >= 2005) 
+            return "школьница"
+        else if (this.person.birthYear >= 2001)
+            return "студентка"
+        else if (this.person.birthYear <= 1957)
+            return "пенсионерка"
         else return this.randomValue(this.femaleProfessionJson)
+
+        }
+        
     },
 
     getPerson: function () {
