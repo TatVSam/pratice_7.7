@@ -2,11 +2,17 @@
     margin-top: 2em;
   
 }
+
+.game-card {
+    display: flexbox;
+    justify-content: center;
+}
+
 .column {
     text-align: left;
 }
 
-h3,h4,h5{
+h4,h5{
     margin-top: 1em;
 }
 
@@ -14,16 +20,24 @@ h3,h4,h5{
     margin-top: 1em;
 }
 
+
 .card {
     border-width: 2px;
     border-radius: 10px;
+  
     border-color:#074050;
+   
+}
+
+.cardColumn {
+    max-width: 40vw;
+
 }
 
 .card-header {
     background-color:#217a79;
     color: white;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .card-body {
@@ -42,7 +56,7 @@ h3,h4,h5{
     display: inline-block;
     width: 49%;
     padding: 10px;
-    font-size: 18px;
+    font-size: 20px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -67,3 +81,33 @@ h3,h4,h5{
     background-color: #105965;
     transform: translateY(4px);
   }
+
+  @media (max-width: 1280px) 
+  {
+
+    .cardColumn {
+        min-width: 65vw;
+    }
+                          
+
+   }
+
+   @media (max-width: 800px) {
+
+    .cardColumn
+        {
+        min-width: 80vw;
+            }
+                          
+
+   }
+
+   @media (max-width: 540px) 
+   {
+   
+     .cardColumn {
+         min-width: 99vw;
+    }
+                           
+ 
+    }
