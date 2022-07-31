@@ -1,6 +1,6 @@
 .generatorForm {
     margin-top: 2em;
-    box-sizing: border-box;
+  
 }
 .column {
     text-align: left;
@@ -14,17 +14,26 @@ h3,h4,h5{
     margin-top: 1em;
 }
 
+.card {
+    border-width: 2px;
+    border-radius: 10px;
+    border-color:#074050;
+}
+
 .card-header {
     background-color:#217a79;
     color: white;
+    font-size: 18px;
 }
 
 .card-body {
-    background-color:#d3f2a3;
+    background-color:#e0f5e0;
     color: #074050;
 }
 
 .card-footer {
+    display: flex;
+    justify-content: space-between;
     background-color:#217a79;
     color: black;
 }
@@ -32,7 +41,7 @@ h3,h4,h5{
 #btnClear, #btnActivate {
     display: inline-block;
     width: 49%;
-    padding: 10px 20px;
+    padding: 10px;
     font-size: 18px;
     cursor: pointer;
     text-align: center;
@@ -43,7 +52,7 @@ h3,h4,h5{
     border: none;
     border-radius: 10px;
  
-  }
+}
   
   #btnActivate:hover {background-color: #6cc08b}
 

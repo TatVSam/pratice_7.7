@@ -7,6 +7,7 @@ function fillinEverything () {
     document.querySelector('#patronymicOutput').textContent = initPerson.patronymic;
     document.querySelector('#birthDateOutput').textContent = initPerson.birthDate;
     document.querySelector('#birthYearOutput').textContent = initPerson.birthYear;
+    document.querySelector('#yearLetter').textContent = " г.";
     document.querySelector('#professionOutput').textContent = initPerson.profession;
 }
 
@@ -23,5 +24,7 @@ document.querySelector("#btnActivate").addEventListener('click', function () {
 
 document.querySelector("#btnClear").addEventListener('click', function () {
     initPerson = {};
+    
     fillinEverything();
+    document.querySelector('#yearLetter').textContent = "";
 })

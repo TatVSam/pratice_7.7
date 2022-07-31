@@ -21,7 +21,7 @@ const personGenerator = {
         }
     }`,
     firstNameMaleJson: `{
-        "count": 10,
+        "count": 15,
         "list": {     
             "id_1": "Александр",
             "id_2": "Максим",
@@ -32,11 +32,16 @@ const personGenerator = {
             "id_7": "Михаил",
             "id_8": "Даниил",
             "id_9": "Егор",
-            "id_10": "Андрей"
+            "id_10": "Андрей",
+            "id_11": "Вадим",
+            "id_12": "Сергей",
+            "id_13": "Алексей",
+            "id_14": "Денис",
+            "id_15": "Валерий"
         }
     }`,
     firstNameFemaleJson: `{
-        "count": 10,
+        "count": 15,
         "list": {     
             "id_1": "Ольга",
             "id_2": "Марина",
@@ -47,11 +52,17 @@ const personGenerator = {
             "id_7": "Елена",
             "id_8": "Наталья",
             "id_9": "Александра",
-            "id_10": "Мария"
+            "id_10": "Мария",
+            "id_11": "Людмила",
+            "id_12": "Татьяна",
+            "id_13": "Оксана",
+            "id_14": "Ирина",
+            "id_15": "Дарья"
+            
         }
     }`,
     patronymicJson: `{
-        "count": 10,
+        "count": 15,
         "list": {     
             "id_1": "Андреевич",
             "id_2": "Федорович",
@@ -62,7 +73,12 @@ const personGenerator = {
             "id_7": "Александрович",
             "id_8": "Алексеевич",
             "id_9": "Денисович",
-            "id_10": "Владиславович"
+            "id_10": "Владиславович",
+            "id_11": "Вадимович",
+            "id_12": "Дмитриевич",
+            "id_13": "Васильевич",
+            "id_14": "Николаевич",
+            "id_15": "Всеволодович"
         }
     }`,
     
@@ -88,39 +104,39 @@ const personGenerator = {
     maleProfessionJson: `{
         "count": 10,
         "list": {     
-            "id_1": "столяр",
-            "id_2": "программист",
-            "id_3": "учитель",
-            "id_4": "бизнесмен",
-            "id_5": "спортсмен",
-            "id_6": "водитель",
-            "id_7": "менеджер",
-            "id_8": "музыкант",
-            "id_9": "юрист",
-            "id_10": "военный"
+            "id_1": "Столяр",
+            "id_2": "Программист",
+            "id_3": "Учитель",
+            "id_4": "Бизнесмен",
+            "id_5": "Спортсмен",
+            "id_6": "Водитель",
+            "id_7": "Менеджер",
+            "id_8": "Музыкант",
+            "id_9": "Юрист",
+            "id_10": "Военный"
         }
     }`,
 
     femaleProfessionJson: `{
         "count": 10,
         "list": {     
-            "id_1": "медсестра",
-            "id_2": "программист",
-            "id_3": "учитель",
-            "id_4": "воспитатель",
-            "id_5": "дизайнер",
-            "id_6": "врач",
-            "id_7": "менеджер",
-            "id_8": "музыкант",
-            "id_9": "юрист",
-            "id_10": "секретарь"
+            "id_1": "Медсестра",
+            "id_2": "Программист",
+            "id_3": "Учитель",
+            "id_4": "Воспитатель",
+            "id_5": "Дизайнер",
+            "id_6": "Врач",
+            "id_7": "Менеджер",
+            "id_8": "Музыкант",
+            "id_9": "Юрист",
+            "id_10": "Секретарь"
         }
     }`,
 
     GENDER_MALE: 'Мужской',
     GENDER_FEMALE: 'Женский',
 
-    
+    //Проверка на високосный год (количество дней в феврале)
     isLeapYear: function (year) {
 
         if ((0 == year % 4) && (0 != year % 100) || (0 == year % 400)) {
@@ -146,32 +162,30 @@ const personGenerator = {
      },
  
     randomFirstName: function() {
-        if (this.person.gender === this.GENDER_MALE) return this.randomValue(this.firstNameMaleJson)
+        if (this.person.gender === this.GENDER_MALE) 
+            return this.randomValue(this.firstNameMaleJson)
         else
-        return this.randomValue(this.firstNameFemaleJson)
+            return this.randomValue(this.firstNameFemaleJson)
 
     },
 
     randomSurname: function() {
-        if (this.person.gender === this.GENDER_MALE) return this.randomValue(this.surnameJson)
+        if (this.person.gender === this.GENDER_MALE) 
+            return this.randomValue(this.surnameJson)
         else
-        return `${this.randomValue(this.surnameJson)}a`
-
-    },
-
-    randomSurname: function() {
-        if (this.person.gender === this.GENDER_MALE) return this.randomValue(this.surnameJson)
-        else
-        return `${this.randomValue(this.surnameJson)}a`
+            return `${this.randomValue(this.surnameJson)}a`
 
     },
 
     randomPatronymic: function() {
-        if (this.person.gender === this.GENDER_MALE) return this.randomValue(this.patronymicJson)
-        else return `${this.randomValue(this.patronymicJson).slice(0, -2)}на`
+        if (this.person.gender === this.GENDER_MALE) 
+            return this.randomValue(this.patronymicJson)
+        else 
+            return `${this.randomValue(this.patronymicJson).slice(0, -2)}на`
     },
 
     randomBirthDate: function() {
+        
         let resDate = this.randomValue(this.monthGenitiveJson);
          
                 
@@ -193,29 +207,30 @@ const personGenerator = {
     },
 
     randomProfession: function() {
+
         if (this.person.gender === this.GENDER_MALE) {
             if (this.person.birthYear >= 2016) 
-            return "дошкольник"
-        else if (this.person.birthYear >= 2005) 
-            return "школьник"
-        else if (this.person.birthYear >= 2001)
-            return "студент"
-        else if (this.person.birthYear <= 1957)
-            return "пенсионер"
-        else return this.randomValue(this.maleProfessionJson)
+                return "Дошкольник"
+            else if (this.person.birthYear >= 2005) 
+                return "Школьник"
+            else if (this.person.birthYear >= 2001)
+                return "Студент"
+            else if (this.person.birthYear <= 1957)
+                return "Пенсионер"
+            else return this.randomValue(this.maleProfessionJson)
 
         }
 
         if (this.person.gender === this.GENDER_FEMALE) {
             if (this.person.birthYear >= 2016) 
-            return "дошкольница"
-        else if (this.person.birthYear >= 2005) 
-            return "школьница"
-        else if (this.person.birthYear >= 2001)
-            return "студентка"
-        else if (this.person.birthYear <= 1957)
-            return "пенсионерка"
-        else return this.randomValue(this.femaleProfessionJson)
+                return "Дошкольница"
+            else if (this.person.birthYear >= 2005) 
+                return "Школьница"
+            else if (this.person.birthYear >= 2001)
+                return "Студентка"
+            else if (this.person.birthYear <= 1957)
+                return "Пенсионерка"
+            else return this.randomValue(this.femaleProfessionJson)
 
         }
         
