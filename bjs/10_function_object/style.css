@@ -123,16 +123,16 @@ h5 {
     }
     
     #btnClear, #btnActivate, .card-header {
-        font-size: 16px;
+        font-size: 14px;
 
     }
     h4 {
-        font-size: 20px;
+        font-size: 18px;
 
     }
 
     h5 {
-        font-size: 18px;
+        font-size: 16px;
     }
    }
 
@@ -146,16 +146,16 @@ h5 {
     }
     
     #btnClear, #btnActivate, .card-header {
-        font-size: 14px;
+        font-size: 12px;
 
     }
     h4 {
-        font-size: 18px;
+        font-size: 16px;
 
     }
 
     h5 {
-        font-size: 16px;
+        font-size: 14px;
     }
  
     }
