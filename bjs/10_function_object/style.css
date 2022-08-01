@@ -81,9 +81,13 @@ h5 {
  
 }
   
-  #btnActivate:hover {background-color: #6cc08b}
+#btnActivate:hover {
+    background-color: #6cc08b
+}
 
-  #btnClear:hover {background-color: #6cc08b}
+#btnClear:hover {
+    background-color: #6cc08b
+}
   
  #btnActivate:active {
     background-color: #105965;
@@ -138,8 +142,7 @@ h5 {
 
    
 
-   @media (max-width: 540px) 
-   {
+   @media (max-width: 540px) {
    
      .cardColumn {
          min-width: 99vw;
@@ -149,6 +152,7 @@ h5 {
         font-size: 12px;
 
     }
+
     h4 {
         font-size: 16px;
 
