@@ -202,33 +202,29 @@ const personGenerator = {
 
     randomBirthYear: function() {
 
-        return this.randomIntNumber(2021, 1940);
+        return this.randomIntNumber(2012, 1940);
 
     },
 
     randomProfession: function() {
 
         if (this.person.gender === this.GENDER_MALE) {
-            if (this.person.birthYear >= 2016) 
-                return "Дошкольник"
-            else if (this.person.birthYear >= 2005) 
+            if (this.person.birthYear >= 2005) 
                 return "Школьник"
             else if (this.person.birthYear >= 2001)
                 return "Студент"
-            else if (this.person.birthYear <= 1957)
+            else if (this.person.birthYear <= 1956)
                 return "Пенсионер"
             else return this.randomValue(this.maleProfessionJson)
 
         }
 
         if (this.person.gender === this.GENDER_FEMALE) {
-            if (this.person.birthYear >= 2016) 
-                return "Дошкольница"
-            else if (this.person.birthYear >= 2005) 
+            if (this.person.birthYear >= 2005) 
                 return "Школьница"
             else if (this.person.birthYear >= 2001)
                 return "Студентка"
-            else if (this.person.birthYear <= 1957)
+            else if (this.person.birthYear <= 1961)
                 return "Пенсионерка"
             else return this.randomValue(this.femaleProfessionJson)
 
