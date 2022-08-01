@@ -99,8 +99,7 @@ h5 {
     transform: translateY(4px);
   }
 
-  @media (max-width: 1280px) 
-  {
+@media (max-width: 1280px) {
 
     .cardColumn {
         min-width: 65vw;
@@ -118,9 +117,9 @@ h5 {
     h5 {
         font-size: 20px;
     }
-   }
+}
 
-   @media (max-width: 720px) {
+@media (max-width: 720px) {
 
     .cardColumn {
         min-width: 80vw;
@@ -138,11 +137,11 @@ h5 {
     h5 {
         font-size: 16px;
     }
-   }
+}
 
    
 
-   @media (max-width: 540px) {
+@media (max-width: 540px) {
    
      .cardColumn {
          min-width: 99vw;
@@ -162,4 +161,4 @@ h5 {
         font-size: 14px;
     }
  
-    }
+}
