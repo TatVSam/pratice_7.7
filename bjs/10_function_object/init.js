@@ -1,4 +1,4 @@
-var initPerson = personGenerator.getPerson();
+let initPerson = personGenerator.getPerson();
 
 function fillinEverything () {
     document.querySelector('#firstNameOutput').textContent = initPerson.firstName;
